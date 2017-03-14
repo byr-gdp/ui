@@ -1,0 +1,40 @@
+.switch-wrapper{
+  height: 32px;
+  width: 64px;
+  /*border: 1px solid #000;*/
+  border-radius: 16px;
+  box-sizing: content-box;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.switch-wrapper.confirm{
+  background-color: #20a0ff;
+}
+
+.switch-wrapper.cancel{
+  background-color: #bfcbd9;
+}
+
+.switch-wrapper .circle{
+  width: 28px;
+  background-color: #fff;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all .5s ease-in-out;
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+}
+
+.switch-wrapper .circle-confirm{
+  /*position: absolute;*/
+  left: 34px;
+  /*top: 1px;*/
+}
+
+.switch-wrapper .circle-cancel{
+  /*position: absolute;*/
+  left: 2px;
+  /*top: 1px;*/
+}
