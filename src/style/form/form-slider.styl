@@ -1,0 +1,30 @@
+// 参考 http://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
+
+// 通过 CSS 配合 input[type=range] 的方式实现会有如下缺陷：
+// - 拖动元素高度无法超过 input 高度。
+// - 当通过样式覆盖 input 宽度时，若不修改 box-shadow 对应值，则可能会出现问题
+
+$range-width = 120px
+$range-height = 8px
+$thumb-width = $thumb-height = $range-height
+
+input[type='range']
+  overflow hidden
+  width $range-width
+  -webkit-appearance: none
+  background-color #e4e8f1
+  outline none
+
+  &::-webkit-slider-runnable-track
+    -webkit-appearance none
+    height $range-height
+    // color #e4e8f1
+
+  &::-webkit-slider-thumb
+    -webkit-appearance: none;
+    width: $thumb-width
+    height: $thumb-height
+    cursor: ew-resize;
+    background: #e43;
+    // 关键：通过 box-shadow 来遮挡住已经划过部分，从而实现改变颜色，所以这个存在硬编码
+    box-shadow: -($range-width) 0 0 $range-width #20a0ff;

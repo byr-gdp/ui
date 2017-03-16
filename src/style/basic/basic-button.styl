@@ -1,0 +1,92 @@
+$color-success = #13ce66
+$color-success-hover = lighten($color-success, 7%)
+$color-success-active = darken($color-success, 10%)
+
+$color-warning = #f7ba2a
+$color-warning-hover = lighten($color-warning, 7%)
+$color-warning-active = darken($color-warning, 10%)
+
+$color-danger = #ff4949
+$color-danger-hover = lighten($color-danger, 7%)
+$color-danger-active = darken($color-danger, 10%)
+
+$color-info = #50bfff
+$color-info-hover = lighten($color-info, 7%)
+$color-info-active = darken($color-info, 10%)
+
+
+btn-decorate()
+  background-color arguments
+  border 1px solid arguments
+
+.btn
+  color #fff
+  text-align center
+  margin 0
+  padding 10px 15px
+  border-radius 4px
+  outline none
+  cursor pointer
+  font-size 12px
+
+.btn-success
+  btn-decorate($color-success)
+
+.btn-success:hover
+  btn-decorate($color-success-hover )
+
+.btn-success:active
+  btn-decorate($color-success-active)
+
+.btn-warning
+  btn-decorate($color-warning)
+
+.btn-warning:hover
+  btn-decorate($color-warning-hover )
+
+.btn-warning:active
+  btn-decorate($color-warning-active)
+
+.btn-danger
+  btn-decorate($color-danger)
+
+.btn-danger:hover
+  btn-decorate($color-danger-hover )
+
+.btn-danger:active
+  btn-decorate($color-danger-active)
+
+.btn-info
+  btn-decorate($color-info)
+
+.btn-info:hover
+  btn-decorate($color-info-hover )
+
+.btn-info:active
+  btn-decorate($color-info-active)
+
+.btn-disabled
+  color #bfcbd9
+  cursor not-allowed
+  background-color #eef1f6
+  border 1px solid #d1dbe5
+
+.btn-loading
+  display inline-flex
+  align-items center
+  cursor not-allowed
+
+.btn-loading::before
+  display inline-block
+  content ''
+  width 18px
+  height 18px
+  background-image url('./../../image/toast-loading.png')
+  background-size 100% 100%
+  background-position center
+  animation rotate 3s infinite linear
+
+@keyframes rotate {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(359deg) }
+}

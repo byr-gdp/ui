@@ -6,6 +6,7 @@ module.exports = {
   output: {
       path: path.join(__dirname, 'dist'),  //打包输出的路径
       filename: 'bundle.js',               //打包后的名字
+      publicPath: '/dist/',
   },
   // 新添加的module属性
   module: {
@@ -22,6 +23,10 @@ module.exports = {
         test: /\.(png|jpg)$/,
 　　　　　loader: 'url-loader?limit=8192'
       },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
+      },
     ]
-  }
+  },
 };

@@ -1,11 +1,17 @@
 import './style/notice/notice.css';
-import './style/form/form.css';
+import './style/form/form-style';
+import './style/basic/basic-style';
+
 import notice from './lib/notice';
 import form from './lib/form';
 
 let root = document.querySelector('#root');
 
-form.switch();
+form.switch(document.querySelector('.form-switch'), () => {
+  notice.toast('开启成功', 'success')
+}, () => {
+  notice.toast('正在关闭', 'loading')
+});
 
 root.addEventListener('click', function(e){
   if(e.target.dataset.category === 'toast'){

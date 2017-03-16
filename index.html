@@ -22,13 +22,29 @@
 
     #root{
       position: fixed;
-      bottom: 10px;
-      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 300px;
+      overflow: scroll;
     }
     </style>
   </head>
   <body>
     <ul id="root">
+      <li>basic
+        <ul>
+          <li>button
+            <ul>
+              <li><button class="btn btn-success">成功按钮</button></li>
+              <li><button class="btn btn-warning">警告按钮</button></li>
+              <li><button class="btn btn-danger">危险按钮</button></li>
+              <li><button class="btn btn-info">危险按钮</button></li>
+              <li><button class="btn btn-disabled">禁用按钮</button></li>
+              <li><button class="btn btn-info btn-loading">加载按钮</button></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li>notice
         <ul>
           <li>alert
@@ -58,7 +74,10 @@
         </ul>
       </li>
       <li>form
-        
+        <ul>
+          <li>switch <div class="form-switch"></div></li>
+          <li>slide <input type="range" name="" value=""></li>
+        </ul>
       </li>
     </ul>
     <script src="./dist/bundle.js"></script>
