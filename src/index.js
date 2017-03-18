@@ -13,6 +13,10 @@ form.switch(document.querySelector('.form-switch'), () => {
   notice.toast('正在关闭', 'loading')
 });
 
+const rangeSlider = form.slider(document.querySelector('.eg-form-slider'), 0, 100, () => {
+  console.log('changed');
+});
+
 root.addEventListener('click', function(e){
   if(e.target.dataset.category === 'toast'){
     notice.toast(e.target.dataset.type, e.target.dataset.type);

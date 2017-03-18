@@ -4,14 +4,15 @@
 // - 拖动元素高度无法超过 input 高度。
 // - 当通过样式覆盖 input 宽度时，若不修改 box-shadow 对应值，则可能会出现问题
 
+// pure css solution begin
 $range-width = 120px
 $range-height = 8px
 $thumb-width = $thumb-height = $range-height
 
-input[type='range']
+input[type='range'].form-slider
   overflow hidden
   width $range-width
-  -webkit-appearance: none
+  -webkit-appearance none
   background-color #e4e8f1
   outline none
 
@@ -21,10 +22,35 @@ input[type='range']
     // color #e4e8f1
 
   &::-webkit-slider-thumb
-    -webkit-appearance: none;
-    width: $thumb-width
-    height: $thumb-height
-    cursor: ew-resize;
-    background: #e43;
+    -webkit-appearance: none
+    width $thumb-width
+    height $thumb-height
+    cursor ew-resize
+    background #e43
     // 关键：通过 box-shadow 来遮挡住已经划过部分，从而实现改变颜色，所以这个存在硬编码
-    box-shadow: -($range-width) 0 0 $range-width #20a0ff;
+    box-shadow -($range-width) 0 0 $range-width #20a0ff
+
+// pure css solution end
+
+// js solution begin
+.slider-default
+  width $range-width
+  height $range-height
+  background-color: #e4e8f1
+  position relative
+
+.slider-overlay
+  width 0
+  height $range-height
+  background-color #20a0ff
+
+.slider-point
+  width $thumb-width
+  height $thumb-height
+  border-radius 50%
+  background-color #e43
+  cursor pointer
+  position absolute
+  top 0
+  left 0
+// js solution end

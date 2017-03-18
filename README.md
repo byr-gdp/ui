@@ -1,5 +1,7 @@
 # UI
 
+一个简单的交互组件库。
+
 ## TODO
 
 - basic
@@ -17,7 +19,7 @@
 
   - input
   - switch √
-  - slider（实现了 pure CSS 方案，但有局限）
+  - slider（两种实现，pureCSS && JS）
   - timepicker
   - datepicker
   - datetimepicker
