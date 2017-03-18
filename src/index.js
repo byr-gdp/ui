@@ -17,6 +17,9 @@ const rangeSlider = form.slider(document.querySelector('.eg-form-slider'), 0, 10
   console.log('changed');
 });
 
+form.timepicker(document.querySelector('.eg-timepicker'), 0, 22, 30);
+form.timepicker(document.querySelector('.eg-timepicker-2'), 0, 22);
+
 root.addEventListener('click', function(e){
   if(e.target.dataset.category === 'toast'){
     notice.toast(e.target.dataset.type, e.target.dataset.type);

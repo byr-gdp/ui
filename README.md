@@ -17,14 +17,15 @@
 
 - form
 
-  - input
+  - input ✘
   - switch √
-  - slider（两种实现，pureCSS && JS）
-  - timepicker
+  - slider（两种实现，pureCSS && JS）√
+  - timepicker √
   - datepicker
   - datetimepicker
   - rate
   - colorpicker
+  - cascader 级联选择器
 
 - others
 

@@ -1,0 +1,91 @@
+.timepicker-wrapper
+  width 100%
+  height 100%
+  position relative
+
+  .timepicker-result
+    width 100%
+    height 100%
+    outline none
+
+  .timepicker-list-wrapper
+    position absolute
+    z-index 1000
+    top 100%
+    width 100%
+    margin-top 5px
+    background-color #fff
+
+    .timepicker-list
+      list-style none
+      padding 0
+      overflow-y scroll
+      transition all .3s ease
+      opacity 0
+      max-height 0
+
+      &.active
+        opacity 1
+        max-height 100px
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+      }
+
+      .timepicker-item
+        text-align left
+        cursor pointer
+
+        &:hover
+          background-color #20a0ff
+          color #fff
+
+    .timepicker-hour-list,
+    .timepicker-min-list
+      float left;
+      width 50%;
+      overflow-y scroll
+      list-style none
+      padding 0
+      transition all .3s ease
+      opacity 0
+      max-height 0
+
+      &.active
+        opacity 1
+        max-height 100px
+
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+      }
+
+      .timepicker-item
+        text-align left
+        cursor pointer
+
+        &:hover
+          background-color #20a0ff
+          color #fff
