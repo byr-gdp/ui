@@ -233,6 +233,129 @@ let form = {
         minList.classList.add('active');
       });
     }
+  },
+
+  /**
+   * Date Picker 日期选择器
+   * Note: 目前只考虑起始时间为今天。年月无法自定义，只能由当前日期逐次修改。
+   * @param {HTMLElement} target 日期选择器所附属节点
+   * @param {Function} cb_confirm 选择日期后的回调
+   */
+
+  datepicker: (target, cb_confirm) => {
+    const tpl = `
+                <div class='datepicker-wrapper'>
+                  <input type='text' class='datepicker-result'/>
+                  <div class='datepicker-container'>
+                    <div class='datepicker-header'>
+                      <span class='icon icon-double-arrow-left' data-type='prevYear'></span>
+                      <span class='icon icon-arrow-left' data-type='prevMonth'></span>
+                      <span class='cur-date'></span>
+                      <span class='icon icon-arrow-right' data-type='nextMonth'></span>
+                      <span class='icon icon-double-arrow-right' data-type='nextYear'></span>
+                    </div>
+                    <div class='datepicker-body'>
+                      <div class='week-header'>
+                        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                      </div>
+                      <div class='week-detail'>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                `;
+    target.innerHTML = tpl;
+
+    const datepickerResult = target.querySelector('.datepicker-result');
+    datepickerResult.addEventListener('focus', (e) => {
+      e.target.nextElementSibling.classList.add('active');
+    });
+
+    // datepickerResult.addEventListener('blur', (e) => {
+    //   e.target.nextElementSibling.classList.remove('active');
+    // });
+
+    const calculateDays = (year, month) => {
+      const totalDays = 35; // 一共显示 35 天
+      // const month = today.getMonth(); // index from 0
+      // const year = today.getFullYear();
+      const totalDaysOfCurMonth = new Date(year, month + 1, 0).getDate(); // 当月天数
+      const totalDaysOfLastMonth = new Date(year, month, 0).getDate();    // 上月天数
+      const firstDayOfCurMonth = new Date(year, month, 1).getDay();       // 当月第一天星期几
+      const prevDays = firstDayOfCurMonth;                                // 当月前需要补充的天数
+      const afterDays = totalDays - totalDaysOfCurMonth - prevDays;
+
+      const today = new Date(year, month);
+      const curYear = today.getFullYear();
+      const curMonth = today.getMonth();
+
+      console.log(curYear, curMonth);
+
+      const showDate = target.querySelector('.cur-date');
+      showDate.innerText = `${curYear}年，${curMonth + 1}月`;
+
+      console.info(`本月一共有${totalDaysOfCurMonth}天`);
+      console.info(`本月第一天星期${firstDayOfCurMonth}`);
+      console.info(`上月一共有${totalDaysOfLastMonth}天`);
+      console.info(`本月前补充${prevDays}天`);
+      console.info(`本月后补充${afterDays}天`);
+
+      // 日期显示五周
+      // 指定月份含有多少天
+      // 指定月份第一天星期几，并补全之前几天，计算上月一共多少天
+      // 指定月份最后一天星期几，并补全之后几天
+
+      const weekDetail = target.querySelector('.week-detail');
+      let monthTpl = `<div class='line'>`;
+
+      for (let i = 0; i < totalDays; i++) {
+        if (i % 7 === 0 && i !== 0) {
+          monthTpl += `</div><div class='line'>`
+        }
+        if (i < prevDays) {
+          monthTpl += `<span class='week-item disabled'>${totalDaysOfLastMonth - prevDays + i + 1}</span>`
+        } else if (i < prevDays + totalDaysOfCurMonth) {
+          monthTpl += `<span class='week-item'>${i - prevDays + 1}</span>`
+        } else {
+          monthTpl += `<span class='week-item disabled'>${i - prevDays - totalDaysOfCurMonth + 1}</span>`
+        }
+      }
+
+      monthTpl += `</div>`;
+      weekDetail.innerHTML = monthTpl;
+    }
+
+    // 初始化日期
+    const today = new Date();
+    let curYear = today.getFullYear();
+    let curMonth = today.getMonth();
+
+    calculateDays(curYear, curMonth);
+
+    // 更新日期
+    const datepickerHeader = target.querySelector('.datepicker-header');
+    datepickerHeader.addEventListener('click', (e) => {
+      if (e.target.dataset.type !== 'undefined') {
+        switch (e.target.dataset.type) {
+          case 'prevYear': curYear--; break;
+          case 'prevMonth': curMonth--; break;
+          case 'nextMonth': curMonth++; break;
+          case 'nextYear': curYear++; break;
+        }
+
+        calculateDays(curYear, curMonth);
+      }
+    });
+
+    // 选择日期
+    const datepickerBody = target.querySelector('.datepicker-body');
+    datepickerBody.addEventListener('click', (e) => {
+      console.log(e.target.innerText);
+      if (!e.target.classList.contains('disabled')) {
+        datepickerResult.value = new Date(curYear, curMonth, e.target.innerText).toLocaleDateString();
+        e.target.offsetParent.classList.remove('active');
+      }
+    });
   }
 }
 

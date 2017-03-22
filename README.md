@@ -22,13 +22,13 @@
   - slider（两种实现，pureCSS && JS）√
   - timepicker √
   - datepicker
-  - datetimepicker
-  - rate
-  - colorpicker
-  - cascader 级联选择器
+  - datetimepicker（待定）
+  - rate ≈
+  - colorpicker（待定）
+  - cascader 级联选择器 ≈
 
 - others
 
-  - dialog (可由目前的 messageBox 扩展）
-  - carousel
-  - collapse
+  - dialog (可由目前的 messageBox 扩展，暂不考虑）
+  - carousel（各种轮播图）
+  - collapse ✘
