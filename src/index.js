@@ -4,6 +4,7 @@ import './style/basic/basic-style';
 
 import notice from './lib/notice';
 import form from './lib/form';
+import carousel from './lib/carousel';
 
 let root = document.querySelector('#root');
 
@@ -21,6 +22,59 @@ form.timepicker(document.querySelector('.eg-timepicker'), 0, 22, 30);
 form.timepicker(document.querySelector('.eg-timepicker-2'), 0, 22);
 form.datepicker(document.querySelector('.eg-datepicker'));
 
+// eg for cascader
+const source = [
+  {
+    name: '1',
+    children: [
+      {
+        name: '1.1',
+        children: [
+          {
+            name: '1.1.1',
+            children: []
+          }
+        ]
+      },
+      {
+        name: '1.2',
+        children: []
+      },
+      {
+        name: '1.3',
+        children: [
+          {
+            name: '1.3.1',
+            children: []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: '2',
+    children: [
+      {
+        name: '2.1',
+        children: []
+      },
+      {
+        name: '2.2',
+        children: []
+      },
+      {
+        name: '2.3',
+        children: []
+      },
+    ]
+  },
+  {
+    name: '3',
+    children: []
+  }
+]
+form.cascader(document.querySelector('.eg-cascader'), source);
+
 root.addEventListener('click', function(e){
   if(e.target.dataset.category === 'toast'){
     notice.toast(e.target.dataset.type, e.target.dataset.type);
@@ -36,3 +90,6 @@ root.addEventListener('click', function(e){
     // notice.notify().success('提示', '这是一条成功的消息');
   }
 });
+
+// 轮播图
+carousel(document.querySelector('.eg-carousel'), [0, 1, 2]);

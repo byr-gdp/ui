@@ -21,14 +21,17 @@
   - switch √
   - slider（两种实现，pureCSS && JS）√
   - timepicker √
-  - datepicker
+  - datepicker √
   - datetimepicker（待定）
-  - rate ≈
+  - rate（待定）
   - colorpicker（待定）
-  - cascader 级联选择器 ≈
+  - cascader 级联选择器 √
 
 - others
 
-  - dialog (可由目前的 messageBox 扩展，暂不考虑）
-  - carousel（各种轮播图）
+  - dialog (可由目前的 messageBox 扩展，待定）
+  - carousel
+    - 右往左 √
+    - 左往右
+    - 透明度切换
   - collapse ✘

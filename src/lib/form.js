@@ -356,7 +356,115 @@ let form = {
         e.target.offsetParent.classList.remove('active');
       }
     });
-  }
+  },
+
+  /**
+   * Cascader 级联选择器
+   * Note: 目前不考虑动态加载次级选项，所有选项载入前已经确定
+   * @param {HTMLElement} target 级联选择器所附属节点
+   * @param {Array} source 级联选择数据
+   * source 数据结构如下所致
+    [
+      {
+        name: '1',
+        children: [
+          {
+            name: '1.1',
+            children: []
+          },
+          {
+            name: '1.2',
+            children: [
+              {
+                name: '1.2.1'
+                children: []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: '2',
+        children: []
+      }
+    ]
+   */
+  cascader: (target, source) => {
+    const tpl = `
+                  <input type='text' class='cascader-result'>
+                  <div class='cascader-wrapper'></div>
+                `;
+    target.innerHTML = tpl;
+    
+    const wrapper = target.querySelector('.cascader-wrapper');
+    const cascaderResult = target.querySelector('.cascader-result');
+    let cascaderTpl = `<div class='cascader-column' data-deep=1>`;
+    let deep = 0;
+
+    source.forEach((item, index) => {
+      cascaderTpl += `<div class='cascader-item' data-children=${JSON.stringify(item.children)} data-deep=${deep + 1}>
+          ${item.name}
+        </div>`;
+    });
+
+    cascaderTpl += '</div>';
+    wrapper.innerHTML = cascaderTpl;
+
+    const mouseoverHandler = (e) => {
+      if (e.target.classList.contains('cascader-item')) {
+        const children = JSON.parse(e.target.dataset.children);
+        const deep = parseInt(e.target.dataset.deep);
+        const leftBase = 100 - 1;
+
+        // 清除除当前 deep 以外的 cascaderColumn
+        const columns = target.querySelectorAll('.cascader-column');
+        columns.forEach(item => {
+          if (item.dataset.deep > deep) {
+            item.remove();
+          }
+        });
+
+
+        if (children.length > 0) {
+          // 继续展开
+          let docfrag = document.createDocumentFragment();
+          let cascaderTpl = '';
+          let cascaderColumn = document.createElement('div');
+          cascaderColumn.dataset.deep = deep + 1;
+          cascaderColumn.classList.add('cascader-column');
+
+          children.forEach((item, index) => {
+            cascaderTpl += `<div class='cascader-item' data-children=${JSON.stringify(item.children)} data-deep=${deep + 1}>
+                ${item.name}
+              </div>`;
+          });
+
+          cascaderColumn.innerHTML = cascaderTpl;
+          cascaderColumn.style.left = deep * leftBase + 'px';
+          docfrag.appendChild(cascaderColumn);
+          wrapper.appendChild(docfrag);
+        }
+      }
+    }
+    const clickHandler = (e) => {
+      if (e.target.classList.contains('cascader-item') && JSON.parse(e.target.dataset.children).length === 0) {
+        cascaderResult.value = e.target.innerText;
+      }
+    }
+    const mouseleaveHandler = (e) => {
+      // 清除除第一层以外 cascaderColumn
+      const columns = target.querySelectorAll('.cascader-column');
+      columns.forEach(item => {
+        if (item.dataset.deep > 1) {
+          item.remove();
+        }
+      });
+    }
+
+    wrapper.addEventListener('mouseover', mouseoverHandler);
+    wrapper.addEventListener('mouseleave', mouseleaveHandler);
+    wrapper.addEventListener('click', clickHandler);
+  },
 }
 
 export default form;
