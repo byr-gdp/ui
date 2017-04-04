@@ -2,7 +2,8 @@
 var path = require('path');
 
 module.exports = {
-  entry: './src/index.js', //演示单入口文件
+  // entry: './src/index.js', //演示单入口文件
+  entry: './dist/index.js',
   output: {
       path: path.join(__dirname, 'dist'),  //打包输出的路径
       filename: 'bundle.js',               //打包后的名字

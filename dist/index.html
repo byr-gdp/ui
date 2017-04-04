@@ -20,15 +20,25 @@
       margin: 0;
     }
 
-    #root{
+    /*#root{
       position: fixed;
       top: 0px;
       bottom: 0;
       width: 300px;
       overflow: scroll;
+    }*/
+
+    .alert li,
+    .toast li,
+    .message-box,
+    .notify li {
+      cursor: pointer;
     }
 
-    /*timepicker*/
+    .form-slider {
+      display: block;
+    }
+
     .eg-timepicker,
     .eg-timepicker-2 {
       position: relative;
@@ -55,6 +65,7 @@
     </style>
   </head>
   <body>
+    <h1>UI Demo</h1>
     <ul id="root">
       <li>basic
         <ul>
@@ -70,10 +81,10 @@
           </li>
         </ul>
       </li>
-      <li style="display: none">notice
+      <li>notice
         <ul>
           <li>alert
-            <ul>
+            <ul class="alert">
               <li data-category="alert" data-type="success">success</li>
               <li data-category="alert" data-type="warning">warning</li>
               <li data-category="alert" data-type="info">info</li>
@@ -81,14 +92,14 @@
             </ul>
           </li>
           <li>toast
-            <ul>
+            <ul class="toast">
               <li data-category="toast" data-type="success">success</li>
               <li data-category="toast" data-type="error">error</li>
               <li data-category="toast" data-type="loading">loading</li>
             </ul>
           </li>
-          <li data-category="messageBox">messageBox</li>
-          <li>notify
+          <li class="message-box" data-category="messageBox">messageBox</li>
+          <li class="notify">notify
             <ul>
               <li data-category="notify" data-type="success">success</li>
               <li data-category="notify" data-type="warning">warning</li>
@@ -127,6 +138,6 @@
         </div>
       </li>
     </ul>
-    <script src="./dist/bundle.js"></script>
+    <script src="./bundle.js"></script>
   </body>
 </html>

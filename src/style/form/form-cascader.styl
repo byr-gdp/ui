@@ -3,15 +3,23 @@
 
 .cascader-wrapper
   position relative
-  height 200px
+  height 100px
+  transition all .3s ease-in-out
+  opacity 0
+
+  &.active
+    opacity 1
+
 
   .cascader-column
     width 100px
     max-width 100px
     white-space nowrap
+    overflow: hidden;
     text-overflow ellipsis
     border 1px solid #333
     position absolute
+    cursor pointer
 
     .cascader-item
       width 100%

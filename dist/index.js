@@ -1,10 +1,4 @@
-import './style/notice/notice.css';
-import './style/form/form-style';
-import './style/basic/basic-style';
-
-import notice from './lib/notice';
-import form from './lib/form';
-import carousel from './lib/carousel';
+import { notice, form, carousel } from './../index.js';
 
 let root = document.querySelector('#root');
 
@@ -25,26 +19,38 @@ form.datepicker(document.querySelector('.eg-datepicker'));
 // eg for cascader
 const source = [
   {
-    name: '1',
+    name: '指南',
     children: [
       {
-        name: '1.1',
+        name: '设计原则',
         children: [
           {
-            name: '1.1.1',
+            name: '一致',
+            children: []
+          },
+          {
+            name: '反馈',
+            children: []
+          },
+          {
+            name: '效率',
+            children: []
+          },
+          {
+            name: '可控',
             children: []
           }
         ]
       },
       {
-        name: '1.2',
-        children: []
-      },
-      {
-        name: '1.3',
+        name: '导航',
         children: [
           {
-            name: '1.3.1',
+            name: '侧向导航',
+            children: []
+          },
+          {
+            name: '顶部导航',
             children: []
           }
         ]
@@ -52,24 +58,36 @@ const source = [
     ]
   },
   {
-    name: '2',
+    name: '组件',
     children: [
       {
-        name: '2.1',
+        name: 'Basic',
         children: []
       },
       {
-        name: '2.2',
+        name: 'Form',
         children: []
       },
       {
-        name: '2.3',
+        name: 'Data',
+        children: []
+      },
+      {
+        name: 'Notice',
+        children: []
+      },
+      {
+        name: 'Navigation',
+        children: []
+      },
+      {
+        name: 'Others',
         children: []
       },
     ]
   },
   {
-    name: '3',
+    name: '资源',
     children: []
   }
 ]

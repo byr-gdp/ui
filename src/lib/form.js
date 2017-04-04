@@ -394,8 +394,9 @@ let form = {
                   <input type='text' class='cascader-result'>
                   <div class='cascader-wrapper'></div>
                 `;
+
     target.innerHTML = tpl;
-    
+
     const wrapper = target.querySelector('.cascader-wrapper');
     const cascaderResult = target.querySelector('.cascader-result');
     let cascaderTpl = `<div class='cascader-column' data-deep=1>`;
@@ -424,9 +425,8 @@ let form = {
           }
         });
 
-
+        // 继续展开
         if (children.length > 0) {
-          // 继续展开
           let docfrag = document.createDocumentFragment();
           let cascaderTpl = '';
           let cascaderColumn = document.createElement('div');
@@ -449,6 +449,7 @@ let form = {
     const clickHandler = (e) => {
       if (e.target.classList.contains('cascader-item') && JSON.parse(e.target.dataset.children).length === 0) {
         cascaderResult.value = e.target.innerText;
+        wrapper.classList.remove('active');
       }
     }
     const mouseleaveHandler = (e) => {
@@ -461,9 +462,18 @@ let form = {
       });
     }
 
+    const focusHandler = (e) => {
+      console.log('focus');
+      console.log(e.target.nextElementSibling.classList);
+      if (!e.target.nextElementSibling.classList.contains('active')) {
+        e.target.nextElementSibling.classList.add('active');
+      }
+    }
+
     wrapper.addEventListener('mouseover', mouseoverHandler);
     wrapper.addEventListener('mouseleave', mouseleaveHandler);
     wrapper.addEventListener('click', clickHandler);
+    cascaderResult.addEventListener('focus', focusHandler);
   },
 }
 
