@@ -10,10 +10,11 @@ $color = #333
     width 100%
     height 100%
     position absolute
-    left 100%
+    opacity 1
+    // left 100%
 
     &.active
-      transition left 2s ease-in-out
+      transition all 1s ease-in-out
 
     &.center
       left 0
@@ -23,6 +24,31 @@ $color = #333
 
     &.right
       left 100%
+
+    &.hide
+      opacity 0
+
+  .prev
+    cursor pointer
+    background-color #000
+    opacity .3
+    color #fff
+    padding 10px
+    position absolute
+    left 0
+    top 50%
+    transform translate(0, -50%)
+
+  .next
+    cursor pointer
+    background-color #000
+    opacity .3
+    color #fff
+    padding 10px
+    position absolute
+    right 0
+    top 50%
+    transform translate(0, -50%)
 
 .photo-0
   background $color

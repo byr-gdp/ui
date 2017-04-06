@@ -1,7 +1,8 @@
-import './style/notice/notice.css';
-import './style/form/form-style';
-import './style/basic/basic-style';
+// import './style/notice/notice.css';
+// import './style/form/form-style';
+// import './style/basic/basic-style';
 
+import basic from './lib/basic';
 import notice from './lib/notice';
 import form from './lib/form';
 import carousel from './lib/carousel';

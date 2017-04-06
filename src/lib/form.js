@@ -1,4 +1,5 @@
 'use strict';
+import './../style/form/form-style';
 
 let form = {
   /**

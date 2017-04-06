@@ -110,4 +110,9 @@ root.addEventListener('click', function(e){
 });
 
 // 轮播图
-carousel(document.querySelector('.eg-carousel'), [0, 1, 2]);
+const photoArr = ['https://v2ex.assets.uxengine.net/avatar/3eb1/c847/28148_large.png', 'https://v2ex.assets.uxengine.net/avatar/0b05/e2f5/45395_large.png', 'https://v2ex.assets.uxengine.net/gravatar/cdc3b5746102b1b6b90917847f93724a', 'https://v2ex.assets.uxengine.net/avatar/82ad/5076/224475_large.png'];
+
+carousel(document.querySelector('.eg-carousel'), photoArr, 'toLeft');
+carousel(document.querySelector('.eg-carousel-2'), photoArr, 'toRight');
+carousel(document.querySelector('.eg-carousel-3'), photoArr, 'fadeInOut');
+carousel(document.querySelector('.eg-carousel-4'), photoArr);

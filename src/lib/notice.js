@@ -1,5 +1,4 @@
-let ui = {};
-
+import './../style/notice/notice.css';
 // notice 相关
 
 // alertBox 用于容纳多个 alert DOM
@@ -280,7 +279,5 @@ let notice = {
     // });
   }
 }
-
-ui = Object.assign({}, notice);
 
 export default notice;
